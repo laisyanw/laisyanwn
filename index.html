@@ -4,20 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#eaf6ff">
-  <title>Laisya Nurwidian | Seoul Sky 2026</title>
+  <meta name="theme-color" content="#dceeff">
+  <meta name="description" content="Portofolio pribadi Laisya Nurwidian, Seoul Sky Portfolio 2026.">
+  <title>Laisya Nurwidian | Seoul Sky Portfolio</title>
 
   <style>
-    /* ===== SEOUL SKY THEME ===== */
+    /* =========================
+       1. PENGATURAN DASAR
+    ========================== */
     :root {
-      --sky: #eaf6ff;
-      --baby: #cce9ff;
-      --blue: #75b8e5;
-      --dark-blue: #367ba9;
-      --navy: #243d55;
-      --text: #526a80;
+      --sky: #dceeff;
+      --sky-dark: #a8d2f4;
+      --blue: #639ac5;
+      --navy: #355773;
+      --lavender: #e7e5ff;
       --white: #ffffff;
-      --shadow: 0 15px 40px rgba(54,123,169,.13);
+      --text: #425a70;
+      --muted: #73869a;
+      --line: #e8f0f8;
+      --shadow: 0 12px 35px rgba(89, 132, 172, 0.12);
+      --radius: 24px;
     }
 
     * {
@@ -28,14 +34,14 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 95px;
     }
 
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(180deg, #eaf6ff, #ffffff, #edf8ff);
+      background: #f7fbff;
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
       overflow-x: hidden;
     }
 
@@ -44,8 +50,22 @@
       text-decoration: none;
     }
 
-    button {
+    button, input {
       font: inherit;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 3px solid #639ac5;
+      outline-offset: 4px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     .container {
@@ -54,671 +74,834 @@
     }
 
     .section {
-      padding: 85px 0;
+      padding: 95px 0;
+      position: relative;
       scroll-margin-top: 75px;
     }
 
-    .section-title {
+    .section:nth-of-type(even) {
+      background: rgba(226, 240, 255, 0.32);
+    }
+
+    .section-heading {
       text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      color: var(--navy);
-      margin: 12px 0;
-      line-height: 1.3;
-    }
-
-    .section-title p {
-      color: var(--text);
+      margin-bottom: 45px;
     }
 
     .eyebrow {
-      display: inline-block;
-      background: white;
-      color: var(--dark-blue);
-      padding: 6px 15px;
-      border-radius: 30px;
-      border: 1px solid #d4eafa;
-      font-size: .8rem;
-      font-weight: bold;
-      letter-spacing: 1px;
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.3;
+      margin: 9px 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .korean {
-      color: var(--dark-blue);
+      color: var(--blue);
+      font-weight: 500;
     }
 
     .card {
-      background: rgba(255,255,255,.88);
-      border: 1px solid white;
-      border-radius: 25px;
-      padding: 28px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(221, 236, 249, 0.95);
+      border-radius: var(--radius);
+      padding: 27px;
       box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    /* ===== NAVIGATION ===== */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid #dceefa;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(89, 132, 172, 0.17);
     }
 
+    .icon {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      background: var(--sky);
+      border-radius: 16px;
+      font-size: 1.45rem;
+      margin-bottom: 17px;
+      flex-shrink: 0;
+    }
+
+    .card h3 {
+      color: var(--navy);
+      font-size: 1.13rem;
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* =========================
+       2. NAVIGASI
+    ========================== */
     .navbar {
-      min-height: 72px;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(213, 231, 247, 0.8);
+    }
+
+    .nav-inner {
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
     }
 
-    .brand {
+    .logo {
       color: var(--navy);
-      font-weight: 900;
-      font-size: 1.1rem;
-      line-height: 1.3;
+      font-size: 1.15rem;
+      font-weight: 850;
+      white-space: nowrap;
     }
 
-    .brand small {
-      display: block;
-      color: var(--dark-blue);
-      font-size: .65rem;
-      letter-spacing: 2px;
+    .logo span {
+      color: var(--blue);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 19px;
+      list-style: none;
     }
 
     .nav-links a {
-      padding: 9px 11px;
-      border-radius: 25px;
-      font-size: .86rem;
-      font-weight: 700;
-      transition: .2s;
+      font-size: 0.84rem;
+      color: var(--text);
+      font-weight: 650;
+      transition: color 0.2s;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
-      background: var(--baby);
-      color: var(--dark-blue);
+      color: var(--blue);
     }
 
     .menu-toggle {
       display: none;
-      border: 1px solid #d4eafa;
-      background: white;
+      border: 0;
+      background: var(--sky);
       color: var(--navy);
-      border-radius: 12px;
-      padding: 8px 13px;
-      font-size: 1.3rem;
+      width: 43px;
+      height: 43px;
+      border-radius: 14px;
       cursor: pointer;
+      font-size: 1.4rem;
     }
 
-    /* ===== HERO / COVER ===== */
+    /* =========================
+       3. HERO / HALAMAN AWAL
+    ========================== */
     .hero {
-      min-height: 85vh;
+      min-height: 100svh;
+      padding: 125px 0 65px;
+      position: relative;
       display: flex;
       align-items: center;
-      padding: 60px 0;
-      position: relative;
       overflow: hidden;
+      background:
+        radial-gradient(ellipse at 15% 15%, #ffffff 0, transparent 36%),
+        radial-gradient(ellipse at 90% 80%, #e8e5ff 0, transparent 35%),
+        linear-gradient(135deg, #dceeff, #f5faff 55%, #e9f3ff);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
+      grid-template-columns: 1.1fr 0.9fr;
       align-items: center;
-      gap: 50px;
+      gap: 55px;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-label {
-      display: inline-block;
-      background: white;
-      color: var(--dark-blue);
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #fff;
       padding: 8px 15px;
-      border-radius: 30px;
-      font-size: .82rem;
-      font-weight: bold;
+      border-radius: 100px;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 750;
+      margin-bottom: 22px;
     }
 
     .hero h1 {
-      font-size: clamp(3.5rem, 8vw, 6rem);
       color: var(--navy);
-      letter-spacing: -4px;
-      line-height: 1.05;
-      margin: 22px 0;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      margin-bottom: 13px;
     }
 
     .hero h1 span {
-      display: block;
-      color: var(--dark-blue);
-    }
-
-    .hero p {
-      max-width: 520px;
-      margin-bottom: 20px;
+      color: var(--blue);
     }
 
     .hero-korean {
-      color: var(--dark-blue);
-      font-weight: bold;
+      color: var(--blue);
+      font-size: 1.25rem;
+      margin-bottom: 20px;
     }
 
-    .buttons {
+    .hero-description {
+      max-width: 490px;
+      color: #617b93;
+      font-size: 1.03rem;
+      margin-bottom: 28px;
+    }
+
+    .button-group {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 25px;
     }
 
     .btn {
+      min-height: 47px;
       display: inline-flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 12px 20px;
-      border-radius: 30px;
-      font-weight: bold;
+      padding: 11px 21px;
+      border-radius: 15px;
       border: 1px solid transparent;
+      font-weight: 750;
+      font-size: 0.9rem;
       cursor: pointer;
-      transition: .25s;
+      transition: transform 0.2s, background 0.2s;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: var(--dark-blue);
+      background: var(--blue);
       color: white;
-      box-shadow: 0 8px 20px #367ba933;
+      box-shadow: 0 8px 20px rgba(99, 154, 197, 0.23);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy);
     }
 
     .btn-secondary {
-      background: white;
-      color: var(--dark-blue);
-      border-color: #d4eafa;
+      background: rgba(255,255,255,0.85);
+      color: var(--navy);
+      border-color: #d5e7f6;
     }
 
+    /* TEMPLATE FOTO */
     .photo-stage {
+      width: min(100%, 370px);
+      margin: auto;
       position: relative;
-      min-height: 420px;
-      display: grid;
-      place-items: center;
-    }
-
-    .photo-circle {
-      position: absolute;
-      width: 90%;
-      max-width: 380px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: linear-gradient(145deg, white, #bce2ff);
-    }
-
-    .polaroid {
-      position: relative;
-      z-index: 2;
-      width: min(78%, 300px);
-      background: white;
-      padding: 13px 13px 20px;
-      box-shadow: 0 20px 45px #244d6d30;
-      transform: rotate(3deg);
-      transition: .3s;
-    }
-
-    .polaroid:hover {
-      transform: rotate(0) translateY(-5px);
+      padding: 18px;
     }
 
     .photo-frame {
-      aspect-ratio: 4 / 5;
-      background: linear-gradient(145deg, #e4f4ff, #b4ddf8);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      overflow: hidden;
       position: relative;
-      color: var(--dark-blue);
+      background: white;
+      padding: 13px 13px 48px;
+      border-radius: 25px;
+      box-shadow: 0 24px 65px rgba(71, 120, 162, 0.19);
+      transform: rotate(2deg);
+      border: 1px solid #e5eff8;
     }
 
-    .photo-frame img {
-      position: absolute;
-      inset: 0;
+    .photo-window {
+      position: relative;
+      height: 405px;
+      overflow: hidden;
+      border-radius: 17px;
+      background:
+        radial-gradient(ellipse at 50% 30%, #fff 0%, transparent 36%),
+        linear-gradient(150deg, #c7e5ff, #e6e5ff);
+      display: grid;
+      place-items: center;
+    }
+
+    .photo-window img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
     .photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       padding: 20px;
+      color: var(--navy);
     }
 
     .photo-placeholder .camera {
-      font-size: 3rem;
-      display: block;
-      margin-bottom: 10px;
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.75);
+      font-size: 2.3rem;
+      margin-bottom: 14px;
     }
 
-    .photo-placeholder small {
-      display: block;
-      margin-top: 7px;
+    .photo-placeholder strong {
+      font-size: 1.08rem;
+    }
+
+    .photo-placeholder span {
+      font-size: 0.8rem;
+      margin-top: 5px;
+      color: #637f99;
     }
 
     .photo-caption {
-      text-align: center;
-      padding-top: 12px;
-      color: var(--navy);
-      font-weight: bold;
-    }
-
-    .photo-caption small {
-      display: block;
-      color: var(--text);
-      font-weight: normal;
-    }
-
-    .cloud {
       position: absolute;
-      font-size: 3rem;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    .cloud-one {
-      top: 5%;
-      right: 5%;
-    }
-
-    .cloud-two {
-      bottom: 5%;
-      left: 3%;
-      animation-delay: -2s;
-    }
-
-    .sticker {
-      position: absolute;
-      z-index: 3;
-      right: 0;
-      bottom: 12%;
-      background: white;
-      padding: 12px 15px;
-      border-radius: 15px;
-      color: var(--dark-blue);
-      font-size: .8rem;
-      font-weight: bold;
-      box-shadow: var(--shadow);
-      transform: rotate(-5deg);
-    }
-
-    /* ===== ABOUT ME ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 22px;
-    }
-
-    .about-intro {
-      background: linear-gradient(145deg, #dff1ff, white);
-    }
-
-    .about-intro h3 {
-      font-size: 1.5rem;
-      color: var(--navy);
-      margin: 15px 0;
-    }
-
-    .about-intro p + p {
-      margin-top: 12px;
-    }
-
-    .profile-title {
-      color: var(--navy);
-      margin-bottom: 18px;
-    }
-
-    .profile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .profile-item {
-      background: #f5fbff;
-      border: 1px solid #e1f0fb;
-      padding: 13px;
-      border-radius: 15px;
-      overflow-wrap: anywhere;
-    }
-
-    .profile-item small {
-      display: block;
-      color: #75899b;
-      margin-bottom: 4px;
-    }
-
-    .profile-item strong {
-      color: var(--navy);
-      font-size: .9rem;
-    }
-
-    /* ===== PERSONALITY ===== */
-    .three-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .icon-box {
-      display: grid;
-      place-items: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 17px;
-      background: var(--sky);
-      font-size: 1.6rem;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-
-    .note {
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 18px;
-      background: #dff1ff;
-      color: var(--dark-blue);
-    }
-
-    /* ===== HOBBIES ===== */
-    .two-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .hobby-card {
-      display: flex;
-      gap: 17px;
-      align-items: flex-start;
-    }
-
-    .hobby-icon {
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      width: 58px;
-      height: 58px;
-      border-radius: 18px;
-      background: var(--sky);
-      font-size: 1.8rem;
-    }
-
-    /* ===== FAVORITES ===== */
-    .four-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .favorite {
+      bottom: 11px;
+      left: 0;
+      width: 100%;
       text-align: center;
-      padding: 23px 14px;
-    }
-
-    .favorite-icon {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-
-    .favorite h3 {
+      color: var(--navy);
+      font-family: Georgia, serif;
+      font-style: italic;
       font-size: 1rem;
     }
 
-    .favorite p {
-      font-size: .9rem;
-    }
-
-    /* ===== SKILLS ===== */
-    .skill {
-      background: #f6fbff;
-      border: 1px solid #e0effa;
-      border-radius: 20px;
-      padding: 22px 10px;
-      text-align: center;
-      font-weight: bold;
-      color: var(--navy);
-      transition: .25s;
-    }
-
-    .skill:hover {
-      background: var(--sky);
-      transform: translateY(-4px);
-    }
-
-    .skill span {
-      display: block;
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    /* ===== DREAMS ===== */
-    .dream-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 240px;
-      background: linear-gradient(145deg, white, #e7f5ff);
-    }
-
-    .dream-label {
-      display: inline-block;
-      background: #dff1ff;
-      color: var(--dark-blue);
-      padding: 5px 12px;
-      border-radius: 30px;
-      font-size: .75rem;
-      font-weight: bold;
-    }
-
-    .dream-card h3 {
-      font-size: 1.4rem;
-      margin: 18px 0 12px;
-    }
-
-    /* ===== MOTTO ===== */
-    .motto {
-      text-align: center;
-      background: linear-gradient(135deg, #d6edff, white);
-      padding: 45px 25px;
-    }
-
-    .quote {
-      font-size: 4rem;
-      color: var(--blue);
-      line-height: 1;
-    }
-
-    .motto blockquote {
-      color: var(--navy);
-      font-size: clamp(1.4rem, 4vw, 2.3rem);
-      font-weight: 800;
-      line-height: 1.4;
-      margin: 12px auto 20px;
-      max-width: 750px;
-    }
-
-    .hope {
-      display: flex;
-      align-items: flex-start;
-      gap: 18px;
-    }
-
-    .hope .icon-box {
-      flex-shrink: 0;
-      margin: 0;
-    }
-
-    /* ===== CONTACT ===== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      background: #f6fbff;
-      border: 1px solid #e1f0fb;
-      border-radius: 16px;
-      padding: 14px;
-      transition: .2s;
-      min-width: 0;
-    }
-
-    .contact-link:hover {
-      background: var(--sky);
-      transform: translateX(4px);
-    }
-
-    .contact-icon {
+    .photo-sticker {
+      position: absolute;
+      z-index: 2;
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
-      flex-shrink: 0;
-      background: #dff1ff;
-      border-radius: 13px;
-      font-size: 1.3rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 19px;
+      background: white;
+      box-shadow: var(--shadow);
+      font-size: 1.9rem;
     }
 
-    .contact-link small {
-      display: block;
-      color: #71869a;
+    .sticker-one {
+      top: 2px;
+      right: -3px;
+      transform: rotate(12deg);
     }
 
-    .contact-link strong {
-      color: var(--navy);
-      overflow-wrap: anywhere;
-      font-size: .9rem;
+    .sticker-two {
+      bottom: 60px;
+      left: -8px;
+      transform: rotate(-12deg);
     }
 
-    footer {
-      padding: 28px 0;
+    .photo-tip {
       text-align: center;
-      font-size: .85rem;
-      color: var(--text);
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin: 17px auto 0;
+      max-width: 310px;
     }
 
-    footer strong {
-      color: var(--dark-blue);
+    .photo-controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 13px;
     }
 
-    /* ===== ANIMATIONS ===== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .6s ease, transform .6s ease;
+    .photo-controls .btn {
+      min-height: 40px;
+      padding: 9px 14px;
+      font-size: 0.8rem;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .sky-cloud {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.7;
+      animation: float 7s ease-in-out infinite;
+      font-size: clamp(3rem, 7vw, 6rem);
+    }
+
+    .cloud-one {
+      top: 17%;
+      right: 8%;
+    }
+
+    .cloud-two {
+      bottom: 8%;
+      left: 4%;
+      animation-delay: -3s;
+      font-size: 4rem;
+    }
+
+    .cloud-three {
+      top: 12%;
+      left: 43%;
+      animation-delay: -1.5s;
+      font-size: 2.6rem;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      50% { transform: translateY(-13px); }
+    }
+
+    /* =========================
+       4. TENTANG SAYA
+    ========================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .about-intro {
+      background: linear-gradient(145deg, #e4f2ff, #f1f0ff);
+    }
+
+    .about-intro .greeting {
+      color: var(--blue);
+      font-weight: 800;
+      margin-bottom: 13px;
+    }
+
+    .profile-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      margin-top: 20px;
+    }
+
+    .profile-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 11px;
+    }
+
+    .profile-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .profile-list .label {
+      min-width: 135px;
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .profile-list .value {
+      color: var(--navy);
+      font-weight: 650;
+      overflow-wrap: anywhere;
+    }
+
+    .note {
+      margin-top: 20px;
+      padding: 17px;
+      border-radius: 17px;
+      background: #f0f7ff;
+      color: var(--navy);
+      border-left: 4px solid var(--blue);
+      font-size: 0.91rem;
+    }
+
+    /* =========================
+       5. KEPRIBADIAN
+    ========================== */
+    .three-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .trait-card:nth-child(2) {
+      background: linear-gradient(150deg, white, #f1efff);
+    }
+
+    .trait-card:nth-child(3) {
+      background: linear-gradient(150deg, white, #e9f6ff);
+    }
+
+    .unique-card {
+      margin-top: 22px;
+      background: linear-gradient(120deg, #dceeff, #eceaff);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .unique-card .icon {
+      margin: 0;
+      background: white;
+    }
+
+    /* =========================
+       6. HOBI
+    ========================== */
+    .hobby-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 23px;
+    }
+
+    .hobby-feature {
+      background: linear-gradient(145deg, #dceeff, #f1f0ff);
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .big-emoji {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+
+    .hobby-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 19px;
+    }
+
+    .tag {
+      background: #edf6ff;
+      color: #527da3;
+      border-radius: 100px;
+      padding: 7px 13px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* =========================
+       7. HAL FAVORIT
+    ========================== */
+    .favorites-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+
+    .favorite-card {
+      text-align: center;
+      padding: 24px 15px;
+    }
+
+    .favorite-card .icon {
+      margin: 0 auto 14px;
+    }
+
+    .favorite-card h3 {
+      font-size: 1rem;
+    }
+
+    .favorite-card p {
+      font-size: 0.87rem;
+    }
+
+    .color-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 13px;
+    }
+
+    .dot {
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 1px #dce5ed;
+    }
+
+    /* =========================
+       8. KEAHLIAN
+    ========================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 17px;
+    }
+
+    .skill-card {
+      text-align: center;
+    }
+
+    .skill-card .icon {
+      margin: 0 auto 14px;
+    }
+
+    /* =========================
+       9. MIMPI
+    ========================== */
+    .dream-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .dream-card {
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(145deg, #e2f1ff, white);
+    }
+
+    .dream-card:nth-child(2) {
+      background: linear-gradient(145deg, #eeeaff, white);
+    }
+
+    .dream-number {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      font-size: 4rem;
+      font-weight: 900;
+      color: rgba(99,154,197,0.12);
+      line-height: 1;
+    }
+
+    /* =========================
+       10. MOTTO & HARAPAN
+    ========================== */
+    .quote-section {
+      background: linear-gradient(135deg, #d7ebff, #e9e7ff) !important;
+      text-align: center;
+    }
+
+    .quote-mark {
+      color: var(--blue);
+      font-size: 4rem;
+      line-height: 1;
+    }
+
+    .quote-text {
+      max-width: 750px;
+      margin: 10px auto 20px;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      line-height: 1.5;
+      color: var(--navy);
+      font-weight: 750;
+    }
+
+    .hope-card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.78);
+      padding: 27px;
+      border-radius: var(--radius);
+    }
+
+    /* =========================
+       11. KONTAK
+    ========================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .contact-card {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .contact-card .icon {
+      margin: 0;
+    }
+
+    .contact-card h3 {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .contact-card p,
+    .contact-card a {
+      font-size: 0.83rem;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-card a {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    /* =========================
+       12. FOOTER & TOMBOL ATAS
+    ========================== */
+    footer {
+      background: #e4f1fd;
+      padding: 32px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    footer strong {
+      color: var(--navy);
     }
 
     .back-top {
       position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 50;
-      width: 46px;
-      height: 46px;
-      border: none;
-      border-radius: 15px;
-      background: var(--dark-blue);
+      right: 22px;
+      bottom: 22px;
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 16px;
+      background: var(--blue);
       color: white;
       font-size: 1.3rem;
       box-shadow: var(--shadow);
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transition: .25s;
+      transform: translateY(10px);
+      transition: 0.25s;
+      z-index: 900;
     }
 
-    .back-top.show {
+    .back-top.visible {
       opacity: 1;
       visibility: visible;
+      transform: translateY(0);
     }
 
-    /* ===== RESPONSIVE TABLET ===== */
+    /* =========================
+       13. ANIMASI SCROLL
+    ========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* =========================
+       14. RESPONSIVE TABLET
+    ========================== */
     @media (max-width: 900px) {
+      .nav-links {
+        gap: 12px;
+      }
+
       .nav-links a {
-        padding: 8px;
-        font-size: .77rem;
+        font-size: 0.77rem;
       }
 
       .hero-grid {
         gap: 25px;
       }
 
+      .photo-window {
+        height: 350px;
+      }
+
       .three-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .four-grid {
-        grid-template-columns: 1fr 1fr;
+      .favorites-grid,
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .about-grid {
+      .contact-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    /* ===== RESPONSIVE MOBILE ===== */
+    /* =========================
+       15. RESPONSIVE HP
+    ========================== */
     @media (max-width: 680px) {
       .container {
-        width: 91%;
+        width: min(100% - 34px, 500px);
       }
 
       .section {
-        padding: 65px 0;
+        padding: 70px 0;
+      }
+
+      .nav-inner {
+        min-height: 66px;
       }
 
       .menu-toggle {
-        display: block;
+        display: grid;
+        place-items: center;
       }
 
       .nav-links {
         position: absolute;
-        top: 72px;
+        top: 66px;
         left: 0;
-        right: 0;
+        width: 100%;
+        padding: 14px 5% 22px;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--line);
         display: none;
         flex-direction: column;
         align-items: stretch;
-        padding: 15px 5%;
-        background: white;
+        gap: 3px;
         box-shadow: var(--shadow);
       }
 
@@ -727,188 +910,237 @@
       }
 
       .nav-links a {
-        padding: 12px;
-        font-size: .95rem;
+        display: block;
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 0.93rem;
+      }
+
+      .nav-links a:hover {
+        background: #edf6ff;
       }
 
       .hero {
         min-height: auto;
-        padding: 50px 0 65px;
+        padding: 112px 0 60px;
       }
 
       .hero-grid {
         grid-template-columns: 1fr;
+        gap: 37px;
+      }
+
+      .hero-copy {
         text-align: center;
       }
 
-      .hero h1 {
-        font-size: clamp(3.3rem, 15vw, 5rem);
-      }
-
-      .hero p {
+      .hero-description {
         margin-left: auto;
         margin-right: auto;
       }
 
-      .buttons {
+      .button-group {
         justify-content: center;
       }
 
+      .hero h1 {
+        font-size: clamp(2.7rem, 12vw, 4rem);
+      }
+
       .photo-stage {
-        min-height: 360px;
+        max-width: 330px;
       }
 
-      .polaroid {
-        width: min(72%, 275px);
+      .photo-window {
+        height: 355px;
       }
 
-      .three-grid,
-      .two-grid,
-      .contact-grid {
+      .cloud-one {
+        top: 5%;
+        right: 3%;
+      }
+
+      .cloud-two {
+        bottom: 3%;
+      }
+
+      .cloud-three {
+        display: none;
+      }
+
+      .about-grid,
+      .hobby-grid,
+      .dream-grid {
         grid-template-columns: 1fr;
       }
 
-      .four-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .profile-grid {
+      .three-grid {
         grid-template-columns: 1fr;
       }
 
-      .card {
-        padding: 22px;
+      .unique-card {
+        align-items: flex-start;
       }
 
-      .hobby-card {
-        padding: 22px;
-      }
-
-      .hope {
+      .profile-list li {
         flex-direction: column;
+        gap: 2px;
       }
 
-      .sticker {
-        right: 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
+      .profile-list .label {
+        min-width: 0;
       }
 
-      .reveal {
-        opacity: 1;
-        transform: none;
+      .favorites-grid,
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .favorite-card,
+      .skill-card {
+        padding: 19px 12px;
+      }
+
+      .contact-card {
+        padding: 20px;
+      }
+
+      .back-top {
+        right: 15px;
+        bottom: 15px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- ===== NAVIGATION ===== -->
-  <header>
-    <div class="container navbar">
-      <a href="#home" class="brand">
-        ☁ SEOUL SKY
-        <small>PERSONAL PORTFOLIO · 2026</small>
-      </a>
+
+  <!-- NAVIGASI -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">Seoul<span>Sky</span> ☁</a>
 
       <button class="menu-toggle" id="menuToggle"
         aria-label="Buka menu navigasi"
         aria-expanded="false"
-        aria-controls="navLinks">☰</button>
+        aria-controls="navLinks">
+        ☰
+      </button>
 
-      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
-        <a href="#about">Tentang</a>
-        <a href="#personality">Kepribadian</a>
-        <a href="#hobbies">Hobi</a>
-        <a href="#favorites">Kesukaan</a>
-        <a href="#skills">Keahlian</a>
-        <a href="#dreams">Mimpi</a>
-        <a href="#contact">Kontak</a>
+      <nav aria-label="Navigasi utama">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#personality">Kepribadian</a></li>
+          <li><a href="#hobbies">Hobi</a></li>
+          <li><a href="#favorites">Favorit</a></li>
+          <li><a href="#skills">Keahlian</a></li>
+          <li><a href="#dreams">Mimpi</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- ===== COVER / FOTO ===== -->
+    <!-- HALAMAN AWAL -->
     <section class="hero" id="home">
+      <span class="sky-cloud cloud-one" aria-hidden="true">☁️</span>
+      <span class="sky-cloud cloud-two" aria-hidden="true">☁️</span>
+      <span class="sky-cloud cloud-three" aria-hidden="true">✦</span>
+
       <div class="container hero-grid">
-        <div class="reveal">
-          <div class="hero-label">✦ MY PERSONAL PORTFOLIO · 2026</div>
-          <h1>Hi, I'm <span>Laisya!</span></h1>
-          <p>
-            Selamat datang di ruang kecilku, tempat aku berbagi cerita,
-            hal yang aku suka, dan mimpi yang ingin aku wujudkan.
-          </p>
+        <div class="hero-copy reveal">
+          <div class="hero-label">☁️ MY PERSONAL PORTFOLIO · 2026</div>
+
+          <h1>Hi, I'm<br><span>Laisya!</span></h1>
+
           <p class="hero-korean">
-            안녕하세요! <span style="font-weight:normal">Annyeonghaseyo!</span>
+            라이샤 누르위디안 · 안녕하세요!
           </p>
 
-          <div class="buttons">
-            <a class="btn btn-primary" href="#about">Kenalan, yuk ↗</a>
-            <a class="btn btn-secondary" href="#dreams">Lihat Mimpiku ☁</a>
+          <p class="hero-description">
+            Welcome to my little sky! Tempat aku berbagi cerita,
+            mengenal diriku sendiri, menunjukkan kreativitas, dan
+            menyimpan mimpi-mimpi yang ingin aku wujudkan.
+          </p>
+
+          <div class="button-group">
+            <a class="btn btn-primary" href="#about">
+              Kenalan Yuk! <span aria-hidden="true">♡</span>
+            </a>
+            <a class="btn btn-secondary" href="#dreams">
+              Explore My Dreams ☁
+            </a>
           </div>
-
-          <p style="margin-top:22px;font-size:.85rem">
-            A little piece of me, under the Seoul sky. 🩵
-          </p>
         </div>
 
+        <!-- TEMPLATE FOTO:
+             Pilih foto melalui tombol di bawah.
+             Untuk website GitHub, simpan foto di assets/foto-laisya.jpg
+             lalu ubah PHOTO_SRC di JavaScript. -->
         <div class="photo-stage reveal">
-          <div class="photo-circle"></div>
-          <span class="cloud cloud-one" aria-hidden="true">☁</span>
-          <span class="cloud cloud-two" aria-hidden="true">☁</span>
+          <span class="photo-sticker sticker-one" aria-hidden="true">☁️</span>
+          <span class="photo-sticker sticker-two" aria-hidden="true">🩵</span>
 
-          <div class="polaroid">
-            <div class="photo-frame">
+          <div class="photo-frame">
+            <div class="photo-window">
+              <img id="profilePhoto" alt="Foto profil Laisya Nurwidian"
+                hidden>
+
               <div class="photo-placeholder" id="photoPlaceholder">
-                <span class="camera">📷</span>
-                <strong>Foto kamu di sini</strong>
-                <small>IMG20260905154830.jpg</small>
+                <div class="camera" aria-hidden="true">📷</div>
+                <strong>Your Photo Here!</strong>
+                <span>Tambahkan foto terbaikmu di sini ♡</span>
               </div>
-              <img id="profilePhoto" src="foto-saya.jpg"
-                alt="Foto profil Laisya Nurwidian" hidden>
             </div>
-            <div class="photo-caption">
-              Laisya Nurwidian
-              <small>라이샤 누르위디안 · 2026</small>
-            </div>
+            <div class="photo-caption">a little piece of me ♡</div>
           </div>
 
-          <div class="sticker">nice to meet you! ♡</div>
+          <div class="photo-controls">
+            <button class="btn btn-primary" id="choosePhoto" type="button">
+              📷 Pilih Foto
+            </button>
+            <button class="btn btn-secondary" id="resetPhoto" type="button">
+              Reset
+            </button>
+            <input id="photoInput" type="file" accept="image/*" hidden>
+          </div>
+
+          <p class="photo-tip">
+            Template foto bisa dicoba langsung. Agar fotonya tampil permanen
+            di GitHub, ikuti petunjuk setelah kode ini.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- ===== ABOUT ME ===== -->
+    <!-- TENTANG SAYA -->
     <section class="section" id="about">
       <div class="container">
-        <div class="section-title reveal">
+        <div class="section-heading reveal">
           <span class="eyebrow">01 · About Me</span>
-          <h2>나에 대하여<br>
-            <span class="korean">Tentang Saya</span>
-          </h2>
-          <p>Cerita singkat tentang siapa aku dan hal yang membuatku menjadi diriku sendiri.</p>
+          <h2>나에 대하여 <span class="korean">♡</span></h2>
+          <p>Tentang Saya — yuk, kenalan lebih dekat denganku!</p>
         </div>
 
         <div class="about-grid">
           <article class="card about-intro reveal">
-            <div style="font-size:2.5rem">☁️ 🩵</div>
-            <h3>안녕하세요!<br>Annyeonghaseyo!</h3>
+            <div class="icon" aria-hidden="true">🌷</div>
+            <p class="greeting">안녕하세요! Annyeonghaseyo!</p>
+            <h3>Halo, aku Laisya!</h3>
             <p>
               Namaku Laisya Nurwidian, biasanya aku dipanggil Laisya.
               Aku adalah siswi kelas X-K di SMAN 19 Bandung.
             </p>
+            <br>
             <p>
               Aku suka melakukan hal-hal kreatif seperti membuat kerajinan.
               Selain itu, aku juga suka menonton Drakor dan tertarik
               mempelajari bahasa Korea.
             </p>
+            <br>
             <p>
               Aku masih terus belajar dan berkembang untuk menjadi versi
               terbaik dari diriku sendiri.
@@ -916,33 +1148,539 @@
           </article>
 
           <article class="card reveal">
-            <h3 class="profile-title">My Profile · 프로필</h3>
-            <div class="profile-grid">
-              <div class="profile-item">
-                <small>Nama</small>
-                <strong>Laisya Nurwidian</strong>
-              </div>
-              <div class="profile-item">
-                <small>Nama Korea</small>
-                <strong>라이샤 누르위디안</strong>
-              </div>
-              <div class="profile-item">
-                <small>Nama panggilan</small>
-                <strong>Laisya · 라이샤</strong>
-              </div>
-              <div class="profile-item">
-                <small>Sekolah</small>
-                <strong>SMAN 19 Bandung</strong>
-              </div>
-              <div class="profile-item">
-                <small>Kelas</small>
-                <strong>X-K</strong>
-              </div>
-              <div class="profile-item">
-                <small>Tempat, tanggal lahir</small>
-                <strong>Bandung, 25 Oktober 2010</strong>
-              </div>
+            <div class="icon" aria-hidden="true">🪪</div>
+            <h3>My Profile</h3>
+            <p>Beberapa informasi tentang diriku.</p>
+
+            <ul class="profile-list">
+              <li>
+                <span class="label">Nama lengkap</span>
+                <span class="value">Laisya Nurwidian<br>
+                  <span class="korean">라이샤 누르위디안</span>
+                </span>
+              </li>
+              <li>
+                <span class="label">Nama panggilan</span>
+                <span class="value">Laisya · 라이샤</span>
+              </li>
+              <li>
+                <span class="label">Sekolah</span>
+                <span class="value">SMAN 19 Bandung</span>
+              </li>
+              <li>
+                <span class="label">Kelas</span>
+                <span class="value">X-K</span>
+              </li>
+              <li>
+                <span class="label">Tempat, tanggal lahir</span>
+                <span class="value">Bandung, 25 Oktober 2010</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEPRIBADIAN -->
+    <section class="section" id="personality">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">02 · My Personality</span>
+          <h2>나의 성격 <span class="korean">✧</span></h2>
+          <p>Setiap orang punya kelebihan dan hal yang masih bisa dikembangkan.</p>
+        </div>
+
+        <div class="three-grid">
+          <article class="card trait-card reveal">
+            <div class="icon" aria-hidden="true">💗</div>
+            <h3>Kelebihan</h3>
+            <p>
+              Aku adalah pendengar yang baik dan cukup peka terhadap
+              perasaan teman. Aku senang mendengarkan cerita teman
+              dan berusaha memahami mereka.
+            </p>
+          </article>
+
+          <article class="card trait-card reveal">
+            <div class="icon" aria-hidden="true">🌱</div>
+            <h3>Kekurangan</h3>
+            <p>
+              Aku terkadang kurang percaya diri dan mudah overthinking.
+              Tapi aku sedang belajar untuk lebih percaya pada diriku sendiri.
+            </p>
+          </article>
+
+          <article class="card trait-card reveal">
+            <div class="icon" aria-hidden="true">🦋</div>
+            <h3>Sifatku</h3>
+            <p>
+              Aku termasuk orang yang pemalu dan terkadang merasa
+              nggak enakan kepada orang lain.
+            </p>
+          </article>
+        </div>
+
+        <article class="card unique-card reveal">
+          <div class="icon" aria-hidden="true">✨</div>
+          <div>
+            <h3>Hal yang Membuatku Berbeda</h3>
+            <p>
+              Aku menulis menggunakan tangan kiri dan memiliki tanda
+              lahir di mata kiri. Hal-hal kecil ini menjadi bagian dari
+              diriku yang unik.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOBI -->
+    <section class="section" id="hobbies">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">03 · My Hobbies</span>
+          <h2>내 취미 <span class="korean">☁</span></h2>
+          <p>Hal-hal yang aku suka lakukan di waktu luang.</p>
+        </div>
+
+        <div class="hobby-grid">
+          <article class="card hobby-feature reveal">
+            <div>
+              <div class="big-emoji" aria-hidden="true">🎨</div>
+              <h3>Membuat Kerajinan</h3>
+              <p>
+                Hobiku adalah membuat kerajinan karena menurutku membuat
+                kerajinan bisa mengasah kreativitas dan pikiranku.
+                Selain itu, membuat kerajinan juga membuatku tidak mudah bosan.
+              </p>
             </div>
-            <p style="font-size:.78rem;color:#71869a;margin-top:15px">
-              Pertimbangkan untuk menyembunyikan tanggal lahir lengkap
-              sebe
+            <div class="hobby-tags">
+              <span class="tag">Creative</span>
+              <span class="tag">DIY</span>
+              <span class="tag">Handmade</span>
+            </div>
+          </article>
+
+          <article class="card hobby-feature reveal">
+            <div>
+              <div class="big-emoji" aria-hidden="true">🎬</div>
+              <h3>Menonton Drakor</h3>
+              <p>
+                Aku juga terkadang menonton Drakor karena selain menghibur,
+                aku tertarik untuk mempelajari bahasa Korea.
+              </p>
+            </div>
+            <div class="hobby-tags">
+              <span class="tag">K-Drama</span>
+              <span class="tag">Korean Language</span>
+              <span class="tag">Relax Time</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HAL FAVORIT -->
+    <section class="section" id="favorites">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">04 · My Favorites</span>
+          <h2>내가 좋아하는 것들 <span class="korean">♡</span></h2>
+          <p>Hal-hal sederhana yang aku sukai.</p>
+        </div>
+
+        <div class="favorites-grid">
+          <article class="card favorite-card reveal">
+            <div class="icon" aria-hidden="true">🍞</div>
+            <h3>Makanan</h3>
+            <p>Roti</p>
+          </article>
+
+          <article class="card favorite-card reveal">
+            <div class="icon" aria-hidden="true">🎨</div>
+            <h3>Warna</h3>
+            <p>Biru, hitam, putih, abu-abu</p>
+            <div class="color-dots" aria-label="Biru, hitam, putih, abu-abu">
+              <span class="dot" style="background:#8bc5f2"></span>
+              <span class="dot" style="background:#252b35"></span>
+              <span class="dot" style="background:#ffffff"></span>
+              <span class="dot" style="background:#a9afb8"></span>
+            </div>
+          </article>
+
+          <article class="card favorite-card reveal">
+            <div class="icon" aria-hidden="true">📚</div>
+            <h3>Pelajaran</h3>
+            <p>Ekonomi, Seni Rupa, PAI</p>
+          </article>
+
+          <article class="card favorite-card reveal">
+            <div class="icon" aria-hidden="true">🎧</div>
+            <h3>Hiburan</h3>
+            <p>Drakor &amp; Focus on Me</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEAHLIAN -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">05 · My Skills</span>
+          <h2>나의 기술 <span class="korean">✦</span></h2>
+          <p>Beberapa hal yang aku sukai dan terus aku pelajari.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="card skill-card reveal">
+            <div class="icon" aria-hidden="true">🏸</div>
+            <h3>Badminton</h3>
+            <p>Olahraga yang aku sukai.</p>
+          </article>
+
+          <article class="card skill-card reveal">
+            <div class="icon" aria-hidden="true">🇰🇷</div>
+            <h3>Bahasa Korea</h3>
+            <p>Belajar bahasa dan budaya Korea.</p>
+          </article>
+
+          <article class="card skill-card reveal">
+            <div class="icon" aria-hidden="true">🍳</div>
+            <h3>Memasak</h3>
+            <p>Mencoba membuat makanan.</p>
+          </article>
+
+          <article class="card skill-card reveal">
+            <div class="icon" aria-hidden="true">🧶</div>
+            <h3>Kerajinan Tangan</h3>
+            <p>Membuat karya kreatif.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MIMPI -->
+    <section class="section" id="dreams">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">06 · My Dreams</span>
+          <h2>나의 꿈 <span class="korean">☁️</span></h2>
+          <p>Mimpi yang ingin aku wujudkan suatu hari nanti.</p>
+        </div>
+
+        <div class="dream-grid">
+          <article class="card dream-card reveal">
+            <span class="dream-number" aria-hidden="true">01</span>
+            <div class="icon" aria-hidden="true">💼</div>
+            <h3>Menjadi Pengusaha Sukses</h3>
+            <p>
+              Aku ingin menjadi seorang pengusaha yang sukses, mandiri,
+              dan bisa menciptakan sesuatu yang bermanfaat untuk banyak orang.
+            </p>
+          </article>
+
+          <article class="card dream-card reveal">
+            <span class="dream-number" aria-hidden="true">02</span>
+            <div class="icon" aria-hidden="true">🇰🇷</div>
+            <h3>Pergi ke Korea</h3>
+            <p>
+              Salah satu impianku adalah pergi ke Korea untuk melihat
+              langsung budaya, tempat-tempat menarik, dan mencoba
+              menggunakan bahasa Korea yang aku pelajari.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTTO DAN HARAPAN -->
+    <section class="section quote-section" id="motto">
+      <div class="container reveal">
+        <div class="section-heading">
+          <span class="eyebrow">07 · My Motto</span>
+          <h2>나의 좌우명</h2>
+          <p>Motto saya</p>
+        </div>
+
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <blockquote class="quote-text">
+          Terus belajar, terus berkembang, dan jangan takut mencoba.
+        </blockquote>
+        <p class="korean">조금씩 배우고, 성장하고, 도전을 두려워하지 말자.</p>
+
+        <div style="height:45px"></div>
+
+        <div class="hope-card">
+          <div class="icon" style="margin:0 auto 15px" aria-hidden="true">🌠</div>
+          <h3>나의 희망 · Harapanku</h3>
+          <p>
+            Aku berharap suatu hari nanti bisa menjadi orang yang sukses,
+            terus berkembang menjadi pribadi yang lebih baik, dan bisa
+            membanggakan kedua orang tuaku.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">08 · Get in Touch</span>
+          <h2>연락하다 <span class="korean">♡</span></h2>
+          <p>Temukan aku melalui media sosial berikut.</p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="card contact-card reveal">
+            <div class="icon" aria-hidden="true">📸</div>
+            <div>
+              <h3>Instagram</h3>
+              <p>@lai25_10</p>
+              <a href="https://www.instagram.com/lai25_10/"
+                target="_blank" rel="noopener noreferrer">
+                Kunjungi Instagram ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card contact-card reveal">
+            <div class="icon" aria-hidden="true">🎵</div>
+            <div>
+              <h3>TikTok</h3>
+              <p>@lalaisya10</p>
+              <a href="https://www.tiktok.com/@lalaisya10"
+                target="_blank" rel="noopener noreferrer">
+                Kunjungi TikTok ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card contact-card reveal">
+            <div class="icon" aria-hidden="true">✉️</div>
+            <div>
+              <h3>Email</h3>
+              <p>lalalalaisya@gmail.com</p>
+              <a href="mailto:lalalalaisya@gmail.com">
+                Kirim Email ↗
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p style="text-align:center; color:var(--muted); font-size:0.83rem; margin-top:25px">
+          Catatan: pastikan akun media sosial dan email yang dicantumkan
+          memang ingin kamu tampilkan secara publik.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p><strong>Made with ♡ by Laisya Nurwidian</strong></p>
+      <p>Seoul Sky Portfolio · 2026</p>
+      <p>푸른 하늘처럼, 나의 꿈도 높이 ✧</p>
+      <p style="margin-top:10px">© <span id="year">2026</span> Laisya Nurwidian</p>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop"
+    aria-label="Kembali ke atas" title="Kembali ke atas">
+    ↑
+  </button>
+
+  <script>
+    /* =========================
+       1. MENU NAVIGASI HP
+    ========================== */
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const navItems = document.querySelectorAll(".nav-links a");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+      );
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navItems.forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Buka menu navigasi");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    /* =========================
+       2. TEMPLATE FOTO PROFIL
+    ========================== */
+
+    // Untuk foto permanen di GitHub, ganti null menjadi:
+    // const PHOTO_SRC = "assets/foto-laisya.jpg";
+    //
+    // Simpan foto milikmu di folder assets dengan nama tersebut.
+    const PHOTO_SRC = null;
+
+    const photoInput = document.getElementById("photoInput");
+    const profilePhoto = document.getElementById("profilePhoto");
+    const photoPlaceholder = document.getElementById("photoPlaceholder");
+    const choosePhoto = document.getElementById("choosePhoto");
+    const resetPhoto = document.getElementById("resetPhoto");
+
+    let temporaryPhotoURL = null;
+
+    function showPhoto(src) {
+      profilePhoto.src = src;
+      profilePhoto.hidden = false;
+      photoPlaceholder.hidden = true;
+    }
+
+    function showPlaceholder() {
+      profilePhoto.hidden = true;
+      profilePhoto.removeAttribute("src");
+      photoPlaceholder.hidden = false;
+    }
+
+    if (PHOTO_SRC) {
+      profilePhoto.addEventListener("load", () => {
+        showPhoto(PHOTO_SRC);
+      });
+
+      profilePhoto.addEventListener("error", () => {
+        showPlaceholder();
+        console.warn("Foto tidak ditemukan. Periksa lokasi file foto.");
+      });
+
+      profilePhoto.src = PHOTO_SRC;
+    }
+
+    choosePhoto.addEventListener("click", () => {
+      photoInput.click();
+    });
+
+    photoInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        alert("Silakan pilih file gambar.");
+        photoInput.value = "";
+        return;
+      }
+
+      if (file.size > 8 * 1024 * 1024) {
+        alert("Ukuran foto maksimal 8 MB. Pilih foto yang lebih kecil.");
+        photoInput.value = "";
+        return;
+      }
+
+      if (temporaryPhotoURL) {
+        URL.revokeObjectURL(temporaryPhotoURL);
+      }
+
+      temporaryPhotoURL = URL.createObjectURL(file);
+      showPhoto(temporaryPhotoURL);
+    });
+
+    resetPhoto.addEventListener("click", () => {
+      if (temporaryPhotoURL) {
+        URL.revokeObjectURL(temporaryPhotoURL);
+        temporaryPhotoURL = null;
+      }
+
+      photoInput.value = "";
+
+      if (PHOTO_SRC) {
+        showPhoto(PHOTO_SRC);
+      } else {
+        showPlaceholder();
+      }
+    });
+
+    /* =========================
+       3. ANIMASI SAAT SCROLL
+    ========================== */
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12
+      });
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("show"));
+    }
+
+    /* =========================
+       4. TOMBOL KEMBALI KE ATAS
+    ========================== */
+    const backTop = document.getElementById("backTop");
+
+    window.addEventListener("scroll", () => {
+      backTop.classList.toggle("visible", window.scrollY > 450);
+    }, { passive: true });
+
+    backTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth"
+      });
+    });
+
+    /* =========================
+       5. TAHUN FOOTER
+    ========================== */
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    /* =========================
+       6. NAVIGASI AKTIF
+    ========================== */
+    const sections = document.querySelectorAll("main section[id]");
+
+    if ("IntersectionObserver" in window) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navItems.forEach((link) => {
+              const isActive =
+                link.getAttribute("href") === "#" + entry.target.id;
+
+              if (isActive) {
+                link.classList.add("active");
+              } else {
+                link.classList.remove("active");
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: "-25% 0px -60% 0px"
+      });
+
+      sections.forEach((section) => sectionObserver.observe(section));
+    }
+  </script>
+
+</body>
+</html>
